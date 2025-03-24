@@ -1,0 +1,189 @@
+/* Step 1: Animate the logo */
+@keyframes logoAnimation {
+    from {
+      width: 25px;
+      opacity: 0;
+    }
+    to {
+      width: 475px;
+      opacity: 1;
+    }
+}
+
+.logo {
+    animation: logoAnimation 5s ease forwards;
+}
+
+/* Step 2: Edit the body */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-image: url("concrete_seamless.png");
+    background-color: #f1f1f1;
+}
+
+/* Step 3: Edit the header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+/* Step 4: Edit the nav_links class */
+.nav_links {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Step 5: Style links to maintain the same color after visited */
+a:link, a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Step 6: Style headers that are direct children of the .card class */
+.card > header {
+    background: #288088;
+    border: 2px solid #45ADAD;
+    padding: 20px 0;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    text-align: center;
+}
+
+/* Steps 7 and 8: Correct corner curving and flex properties for .card and .pricing */
+.card {
+    flex-basis: 450px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.pricing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Step 9: Style images in the gallery */
+.gallery img {
+    border: 10px solid #50C7C7;
+    margin: 10px;
+    width: 300px;
+}
+
+/* Step 10: Edit the gallery class to use flex */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Step 11: Adjustments for larger screens */
+@media screen and (min-width: 900px) {
+    header {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Step 12 */
+    .card {
+        flex-basis: 275px;
+    }
+
+    .pricing {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .card > ul {
+        list-style: none;
+        padding-left: 5px;
+    }
+
+    /* Step 13: Fixed header at the top of the screen */
+    body > header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 10;
+        background-color: #f1f1f1;
+        overflow: visible;
+    }
+
+    /* Prevent content from being hidden behind the fixed header */
+    body {
+        padding-top: 60px;
+    }
+
+    h1 {
+        overflow: visible;
+    }
+
+    .nav_links {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 15px;
+    }
+}
+
+/* Step 14: Reduced motion preferences */
+@media all and (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+    .logo {
+        opacity: 1;
+        width: 475px;
+    }
+}
+
+/* Print styling for portrait mode */
+@media print and (orientation: portrait) {
+    /* Step 15 & 16: Change font to Arial with Helvetica backup */
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-image: none;
+    }
+
+    /* Step 17: Adjust spacing for nav and nav_links */
+    nav, .nav_links {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    /* Step 18: Pricing class alignment along the bottom */
+    .pricing {
+        align-items: flex-end;
+    }
+
+    /* Step 19: Adjust card border and size */
+    .card {
+        flex-basis: 325px;
+        border: 2px solid #45ADDD;
+    }
+
+    /* Step 20: Hide gallery in print view */
+    .gallery {
+        display: none;
+    }
+
+    /* Step 21: Add thumbs-up entity to cards */
+    .card::before {
+        content: "👍 ";
+        margin-right: 8px;
+        color: #FFDD00;
+    }
+}
+
